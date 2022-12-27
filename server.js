@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt-nodejs');
 const cors = require('cors');
+const app = express();
 const knex = require('knex');
 
 const register = require('./controllers/register');
@@ -12,7 +13,7 @@ const image = require('./controllers/image');
 const db = knex({
   client: 'pg',
   connection: {
-    host : '127.0.0.1',
+    host : 'postgresql-infinite-72722',
     port : 5432,
     user : 'postgres',
     password : '987412365G',
@@ -24,7 +25,7 @@ const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
-app.use(cors())
+app.use(cors());
 
 app.get('/', (req, res) => {res.send('it is working');})
 app.post('/signin', (req, res) => { signin.handleSignin(req, res, db, bcrypt) })
