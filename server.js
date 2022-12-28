@@ -10,9 +10,11 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const db = knex({
-  client: 'pg',
   connection: {
-    host : 'postgresql://postgres:huynkmoxcvBuIRbA3FYv@containers-us-west-52.railway.app:5855/railway'
+    host : 'containers-us-west-52.railway.app',
+    port : 5855,
+    user : 'postgres',
+    password : 'huynkmoxcvBuIRbA3FYv',
   }
 });
 
