@@ -10,11 +10,13 @@ const profile = require('./controllers/profile');
 const image = require('./controllers/image');
 
 const db = knex({
+  client: 'pg',
   connection: {
     host : 'containers-us-west-52.railway.app',
     port : 5855,
     user : 'postgres',
     password : 'huynkmoxcvBuIRbA3FYv',
+    database : 'railway'
   }
 });
 
@@ -30,6 +32,6 @@ app.post('/register', (req, res) => { register.handleRegister(req, res, db, bcry
 app.get('/profile/:id', (req, res) => { profile.handleProfileGet(req, res, db) })
 app.put('/image', (req, res) => { image.handleImage(req, res, db) })
 
-app.listen(process.env.PORT || 3000, () => {
-	console.log(`app is running on port ${process.env.PORT}`);
+app.listen(3000, () => {
+	console.log('app is running on port 3000');
 })
